@@ -1,0 +1,17 @@
+Obersevations while exploring the database.
+
+1. The documentation is a bit of a figure it out yourself.
+-More of a note than a complaint.
+-More exploration and setting up a proper way to store the data should make negate the problem.
+
+2. Supplying images may not work the way that I would like.  Scrapping the web with Beautiful Soup or another program may help but may not work as intended.  It would be very difficult to check all sources unless I simplify what would or would not be worthy of images.
+
+3. Size maybe a bit of an issue.  Saving the information myself may help as making calls to the API is semi limited in the methods that they allow.
+-They have built in methods but relying on that to populate the page may not be very reliable due to this not being a recent or well maintained API.
+
+4. Implementation of the Memory Alpha and the Memory Beta database would more than likely be necessary.
+
+5. Files will be necessary to save the data, because as mentioned the features of this API are limited and the docs are not the best.
+
+6. https://www.thelcars.com/ will really help for styling.  Using this maybe required to adding styling to focus on the storying and retrieving of data.
+

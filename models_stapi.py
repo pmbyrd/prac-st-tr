@@ -30,14 +30,31 @@ class StarTrekAPI:
         except requests.exceptions.HTTPError as err:
             raise SystemExit(err)
         
+   
+    def get_character_by_id(self, character_id):
+        url = f"{self.base_url}/v1/rest/character/{character_id}"
+        params = {"apiKey": self.api_key}
+        response = requests.get(url, params=params)
+        return response.json()
+
+            
+        
+        
+        
+            
+        
 trek = StarTrekAPI()
 chars = trek.get_characters()
 
 char = [char for char in chars]
 # print(char)
 # turn the json data into a list of dictionaries
-json_data = json.dumps(char)
-print(len(json_data))
+data = json.loads(json.dumps(char))
+c = data[0]["uid"]
+
+# print(len(json_data))
+print(char[0:5])
+
 
 
 
