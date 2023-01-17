@@ -33,7 +33,23 @@ class Actor(db.Model):
     def full_name(self):
         return f"{self.f_name} {self.l_name}"
     
+class Character(db.Model):
+    """Creates a character table"""
     
+    __tablename__ = "characters"
+    
+    uid = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String, nullable=False)
+    gender = db.Column(db.String, nullable=False)
+    yearOfBirth = db.Column(db.Integer, nullable=False)
+    monthOfBirth = db.Column(db.Integer, nullable=False)
+    dayOfBirth = db.Column(db.Integer, nullable=False)
+    placeOfBirth = db.Column(db.String, nullable=False)
+    yearOfBirth = db.Column(db.Integer, nullable=False)
+    monthOfDeath = db.Column(db.Integer, nullable=False)
+    dayOfDeath = db.Column(db.Integer, nullable=False)
+    placeOfDeath = db.Column(db.String, nullable=False)
+    height 
     # *make a relationship with the movies table
     # *make a relationship with the shows table
     
