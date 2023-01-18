@@ -39,21 +39,30 @@ class StarTrekAPI:
     def __init__(self):
         self.url = "https://stapi.co/api"
         
-    def get_characters(self):
+    def get_characters(self, page_number=1):
         """Gets all the characters from the Star Trek API"""
             
         characters = []
+        params = {"pageNumber" = self.page_}
         
-        url = f"{self.url}/v1/rest/character/search?title=Star Trek"
+        url = f"{self.url}/v1/rest/character/search?"
         
-        try:
-            res = requests.get(url)
+        
+        try: 
+            res = requests.get(url, params=params)
             data = res.json()
             res.raise_for_status()
-            characters.extend(data["characters"])
-            return characters
+            
+            # This condition is to check if there is a next page
+            # if there is a next page, then we need to make another call to get the next page
+            while data['page']['lastPage'] is not True:
+                print("next page found, downloading", data['page']['pageNumber'])
+                res = requests.get(url)
+                characters.extend(data["characters"])
+                return characters
         except requests.exceptions.HTTPError as err:
-            raise SystemExit(err)
+            raise SystemExit(err)    
+        
         
    
     def get_character(self, uid):
@@ -114,6 +123,9 @@ def save_all_character_json():
     Path('data/characters.json').write_text(json.dumps(characters, indent=4))    
     
 save_all_character_json()
+
+
+
             
     
             
